@@ -12,6 +12,7 @@ function ChampionsList() {
   const [champions, setChampions] = useState<Champion[]>([]);
   const [loading, isLoading] = useState(true);
   const [CDNerror, setCDNerror] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     setChampionsData();
@@ -40,13 +41,34 @@ function ChampionsList() {
   } else {
     return (
       <>
-        {champions.map((champion) => (
-          <ChampionCard
-            key={champion.id}
-            name={champion.name}
-            title={champion.title}
+        <section className="searchBar">
+          <input
+            type="text"
+            placeholder="Search champion..."
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
           />
-        ))}
+        </section>
+        <section className="championCards">
+          {champions
+            .filter((champion) => {
+              if (searchTerm === "") {
+                return champion;
+              } else if (
+                champion.name.toLowerCase().includes(searchTerm.toLowerCase())
+              ) {
+                return champion;
+              }
+            })
+            .map((champion) => (
+              <ChampionCard
+                key={champion.id}
+                name={champion.name}
+                title={champion.title}
+              />
+            ))}
+        </section>
       </>
     );
   }
