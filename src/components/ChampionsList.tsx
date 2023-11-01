@@ -8,7 +8,16 @@ type Champion = {
   title: string;
 };
 
-function ChampionsList() {
+type ChampionListProps = {
+  onSelectChampion: (name: string) => void;
+  onRemoveChampion: (name: string) => void;
+  selectedChampions: string[];
+};
+
+function ChampionsList({
+  onSelectChampion,
+  selectedChampions,
+}: ChampionListProps) {
   const [champions, setChampions] = useState<Champion[]>([]);
   const [loading, isLoading] = useState(true);
   const [CDNerror, setCDNerror] = useState(false);
@@ -28,6 +37,10 @@ function ChampionsList() {
       }
     }
   }, []);
+
+  const filteredChampions = champions.filter((champion) =>
+    champion.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return <p>Loading...</p>;
@@ -50,24 +63,23 @@ function ChampionsList() {
             }}
           />
         </section>
-        <section className="championCards">
-          {champions
-            .filter((champion) => {
-              if (searchTerm === "") {
-                return champion;
-              } else if (
-                champion.name.toLowerCase().includes(searchTerm.toLowerCase())
-              ) {
-                return champion;
-              }
-            })
-            .map((champion) => (
-              <ChampionCard
-                key={champion.id}
-                name={champion.name}
-                title={champion.title}
-              />
-            ))}
+
+        <section>
+          {filteredChampions.map((champion) => {
+            if (!selectedChampions.includes(champion.name)) {
+              const iconUrl = `https://ddragon.leagueoflegends.com/cdn/13.21.1/img/champion/${champion.id}.png`;
+              return (
+                <ChampionCard
+                  key={champion.id}
+                  name={champion.name}
+                  title={champion.title}
+                  onSelect={() => onSelectChampion(champion.name)}
+                  iconUrl={iconUrl}
+                />
+              );
+            }
+            return null; // Return null if the condition is not met
+          })}
         </section>
       </>
     );
