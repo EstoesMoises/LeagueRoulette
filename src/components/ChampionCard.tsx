@@ -14,9 +14,9 @@ function ChampionCard({name, title, iconUrl, onSelect}: ChampionCardProps) {
   }
 
   return (
-    <div>
+    <div className="champion-card">
     <h1>{name}</h1>
-    <p>{title}</p>
+    <p className="champion-card-title">{title}</p>
     <button onClick={handleSelect}>Select</button>
     <img src={iconUrl} alt={`${name} icon`} />
     </div>

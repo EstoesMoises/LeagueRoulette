@@ -62,7 +62,7 @@ function ChampionsList({onSelectChampion, selectedChampions}: ChampionListProps)
           />
         </section>
         
-        <section>
+        <section className="champion-grid">
           {filteredChampions.map((champion) => {
             if (!selectedChampions?.includes(champion.name)) {
               const iconUrl = `https://ddragon.leagueoflegends.com/cdn/13.21.1/img/champion/${champion.id}.png`;
