@@ -4,11 +4,11 @@ import StandardRoulette from './StandardRoulette';
 import EliminationRoulette from './EliminationRoulette';
 
 function Roulette() {
-  const [selectedChampions, setSelectedChampions] = useState<{name: string, id: string}[]>([]);
+  const [selectedChampions, setSelectedChampions] = useState<{name: string, id: string, iconUrl: string}[]>([]);
   const [rouletteResult, setRouletteResult] = useState<string>('');
   const [mode, setMode] = useState('standard'); 
 
-  function handleSelectChampion (champion: {name: string, id: string}) {
+  function handleSelectChampion (champion: {name: string, id: string, iconUrl: string}) {
     if (!selectedChampions.some(c => c.id === champion.id)) {
       setSelectedChampions(prev => [...prev, champion]);
     }
@@ -25,7 +25,8 @@ function Roulette() {
       <ul>
         {selectedChampions.map((champion, index) => (
           <li key={index}>
-            {champion.name}
+            <span>{champion.name}</span>
+            <img src={champion.iconUrl} alt={`${champion.name} icon`} />
             <button onClick={() => handleRemoveChampion(champion.id)}>Remove</button>
           </li>
         ))}

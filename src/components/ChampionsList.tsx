@@ -9,7 +9,7 @@ type Champion = {
 };
 
 type ChampionListProps = {
-  onSelectChampion: (champion: { name: string; id: string }) => void;
+  onSelectChampion: (champion: { name: string; id: string, iconUrl: string; }) => void;
   onRemoveChampion: (name: string) => void;
   selectedChampions: string[];
 }
@@ -71,7 +71,7 @@ function ChampionsList({onSelectChampion, selectedChampions}: ChampionListProps)
                   key={champion.id}
                   name={champion.name}
                   title={champion.title}
-                  onSelect={() => onSelectChampion({name: champion.name, id: champion.id})}
+                  onSelect={() => onSelectChampion({name: champion.name, id: champion.id, iconUrl})}
                   iconUrl={iconUrl}
                 />
               );

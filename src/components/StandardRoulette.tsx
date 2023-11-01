@@ -3,6 +3,7 @@ import { useState } from "react";
 type Champion = {
     name: string;
     id: string;
+    iconUrl: string;
   };
   
   type Props = {
@@ -13,14 +14,16 @@ type Champion = {
 function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
   const [isSpinning, setIsSpinning] = useState(false);
   const [displayedChampion, setDisplayedChampion] = useState("");
+  const [championIcon, setChampionIcon] = useState("")
 
   function spinRoulette () {
-    if (selectedChampions.length > 0) {
+    if (selectedChampions.length > 1) {
       setIsSpinning(true);
       let currentIndex = 0;
 
       const intervalId = setInterval(() => {
         setDisplayedChampion(selectedChampions[currentIndex].name);
+        setChampionIcon(selectedChampions[currentIndex].iconUrl);
         currentIndex = (currentIndex + 1) % selectedChampions.length;
       }, 100);
 
@@ -30,10 +33,11 @@ function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
         const selectedChampion = selectedChampions[randomIndex];
         onSpinResult(selectedChampion.name);
         setDisplayedChampion(selectedChampion.name);
+        setChampionIcon(selectedChampion.iconUrl);
         setIsSpinning(false);
       }, 4000);
     } else {
-      alert("Please select at least one champion!");
+      alert("Please select at least two champions!");
     }
   };
 
@@ -41,7 +45,7 @@ function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
     <div>
       {displayedChampion && (
         <div className="champion-card">
-          <img src={`https://ddragon.leagueoflegends.com/cdn/13.21.1/img/champion/${displayedChampion}.png`} alt={displayedChampion} className="champion-image" />
+          <img src={championIcon} alt={displayedChampion} className="champion-image" />
           <h3 className="champion-name">{displayedChampion}</h3>
         </div>
       )}

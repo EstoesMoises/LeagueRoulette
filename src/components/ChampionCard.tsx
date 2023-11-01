@@ -5,7 +5,7 @@ type ChampionCardProps =  {
     onSelect?: (name: string) => void;
 }
 
-function ChampionCard({name, title, onSelect}: ChampionCardProps) {
+function ChampionCard({name, title, iconUrl, onSelect}: ChampionCardProps) {
 
   function handleSelect () {
     if (onSelect) {
@@ -18,6 +18,7 @@ function ChampionCard({name, title, onSelect}: ChampionCardProps) {
     <h1>{name}</h1>
     <p>{title}</p>
     <button onClick={handleSelect}>Select</button>
+    <img src={iconUrl} alt={`${name} icon`} />
     </div>
   )
 }

@@ -3,6 +3,7 @@ import SpinRoulette from './StandardRoulette';
 type Champion = {
     name: string;
     id: string;
+    iconUrl: string;
   };
   
   type EliminationRouletteProps = {
