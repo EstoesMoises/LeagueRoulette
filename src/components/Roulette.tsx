@@ -3,19 +3,19 @@ import ChampionsList from './ChampionsList';
 import StandardRoulette from './StandardRoulette';
 import EliminationRoulette from './EliminationRoulette';
 
-function ChampionRoulette() {
-  const [selectedChampions, setSelectedChampions] = useState<string[]>([]);
+function Roulette() {
+  const [selectedChampions, setSelectedChampions] = useState<{name: string, id: string}[]>([]);
   const [rouletteResult, setRouletteResult] = useState<string>('');
-  const [mode, setMode] = useState('standard'); // 'standard' or 'elimination'
+  const [mode, setMode] = useState('standard'); 
 
-  const handleSelectChampion = (name: string) => {
-    if (!selectedChampions.includes(name)) {
-      setSelectedChampions(prev => [...prev, name]);
+  function handleSelectChampion (champion: {name: string, id: string}) {
+    if (!selectedChampions.some(c => c.id === champion.id)) {
+      setSelectedChampions(prev => [...prev, champion]);
     }
   };
 
-  const handleRemoveChampion = (name: string) => {
-    setSelectedChampions(prev => prev.filter(champion => champion !== name));
+  function handleRemoveChampion (id: string) {
+    setSelectedChampions(prev => prev.filter(champion => champion.id !== id));
   };
 
   return (
@@ -23,10 +23,10 @@ function ChampionRoulette() {
       <div className='selected-champion'>
       <h3>Selected Champions:</h3>
       <ul>
-        {selectedChampions.map((name, index) => (
+        {selectedChampions.map((champion, index) => (
           <li key={index}>
-            {name}
-            <button onClick={() => handleRemoveChampion(name)}>Remove</button>
+            {champion.name}
+            <button onClick={() => handleRemoveChampion(champion.id)}>Remove</button>
           </li>
         ))}
       </ul>
@@ -53,10 +53,10 @@ function ChampionRoulette() {
       <ChampionsList
         onSelectChampion={handleSelectChampion}
         onRemoveChampion={handleRemoveChampion}
-        selectedChampions={selectedChampions}
+        selectedChampions={selectedChampions.map(c => c.name)}
       />
     </div>
   );
 }
 
-export default ChampionRoulette;
+export default Roulette;

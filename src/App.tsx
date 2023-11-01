@@ -1,10 +1,10 @@
 import './App.css'
-import ChampionsList from './components/ChampionsList'
+import Roulette from './components/Roulette'
 
 function App() {
   return (
     <>
-      <ChampionsList/>
+      <Roulette/>
     </>
   )
 }

@@ -1,28 +1,33 @@
 import SpinRoulette from './StandardRoulette'; 
 
-type EliminationRouletteProps = {
-  selectedChampions: string[];
-  onEliminationResult: (result: string) => void;
-  onRemoveChampion: (name: string) => void;
-};
+type Champion = {
+    name: string;
+    id: string;
+  };
+  
+  type EliminationRouletteProps = {
+    selectedChampions: Champion[];
+    onEliminationResult: (result: string) => void;
+    onRemoveChampion: (id: string) => void;
+  };
 
 function EliminationRoulette({
   selectedChampions,
   onEliminationResult,
   onRemoveChampion,
 }: EliminationRouletteProps) {
-  const handleSpinResult = (eliminatedChampion: string) => {
-    onRemoveChampion(eliminatedChampion);
-
-    if (selectedChampions.length === 2) {
-      const remainingChampion = selectedChampions.find(
-        (champ) => champ !== eliminatedChampion
-      );
-      if (remainingChampion) {
-        onEliminationResult(remainingChampion);
-      }
-    }
-  };
+    function handleSpinResult (eliminatedChampionId: string) {
+        onRemoveChampion(eliminatedChampionId);
+    
+        if (selectedChampions.length === 2) {
+            const remainingChampion = selectedChampions.find(
+                (champ) => champ.id !== eliminatedChampionId
+            );
+            if (remainingChampion) {
+                onEliminationResult(remainingChampion.name);
+            }
+        }
+    };
 
   return (
     <div className="roulette-container">

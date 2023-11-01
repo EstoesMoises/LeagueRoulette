@@ -1,9 +1,14 @@
 import { useState } from "react";
 
-type Props = {
-  selectedChampions: string[];
-  onSpinResult: (result: string) => void;
-};
+type Champion = {
+    name: string;
+    id: string;
+  };
+  
+  type Props = {
+    selectedChampions: Champion[];
+    onSpinResult: (result: string) => void;
+  };
 
 function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -15,7 +20,7 @@ function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
       let currentIndex = 0;
 
       const intervalId = setInterval(() => {
-        setDisplayedChampion(selectedChampions[currentIndex]);
+        setDisplayedChampion(selectedChampions[currentIndex].name);
         currentIndex = (currentIndex + 1) % selectedChampions.length;
       }, 100);
 
@@ -23,8 +28,8 @@ function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
         clearInterval(intervalId);
         const randomIndex = Math.floor(Math.random() * selectedChampions.length);
         const selectedChampion = selectedChampions[randomIndex];
-        onSpinResult(selectedChampion);
-        setDisplayedChampion(selectedChampion);
+        onSpinResult(selectedChampion.name);
+        setDisplayedChampion(selectedChampion.name);
         setIsSpinning(false);
       }, 4000);
     } else {
