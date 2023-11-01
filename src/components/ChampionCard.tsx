@@ -14,7 +14,7 @@ function ChampionCard({name, title, iconUrl, onSelect}: ChampionCardProps) {
   }
 
   return (
-    <div className="champion-card">
+    <div className="champion-card container">
     <h1>{name}</h1>
     <p className="champion-card-title">{title}</p>
     <button onClick={handleSelect}>Select</button>

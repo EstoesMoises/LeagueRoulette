@@ -52,7 +52,7 @@ function ChampionsList({onSelectChampion, selectedChampions}: ChampionListProps)
   } else {
     return (
       <>
-        <section className="searchBar">
+        <section className="searchBar container">
           <input
             type="text"
             placeholder="Search champion..."
@@ -62,7 +62,7 @@ function ChampionsList({onSelectChampion, selectedChampions}: ChampionListProps)
           />
         </section>
         
-        <section className="champion-grid">
+        <section className="champion-grid container">
           {filteredChampions.map((champion) => {
             if (!selectedChampions?.includes(champion.name)) {
               const iconUrl = `https://ddragon.leagueoflegends.com/cdn/13.21.1/img/champion/${champion.id}.png`;

@@ -4,28 +4,36 @@ type Champion = {
     name: string;
     id: string;
     iconUrl: string;
-  };
+};
   
-  type EliminationRouletteProps = {
+type EliminationRouletteProps = {
     selectedChampions: Champion[];
     onEliminationResult: (result: string) => void;
     onRemoveChampion: (id: string) => void;
-  };
+};
 
 function EliminationRoulette({
   selectedChampions,
   onEliminationResult,
   onRemoveChampion,
 }: EliminationRouletteProps) {
-    function handleSpinResult (eliminatedChampionId: string) {
-        onRemoveChampion(eliminatedChampionId);
-    
-        if (selectedChampions.length === 2) {
-            const remainingChampion = selectedChampions.find(
-                (champ) => champ.id !== eliminatedChampionId
+    function handleSpinResult (selectedChampionName: string) {
+        if (selectedChampions.length > 1) {
+            const championToEliminate = selectedChampions.find(
+                (champ) => champ.name !== selectedChampionName
             );
-            if (remainingChampion) {
-                onEliminationResult(remainingChampion.name);
+            if (championToEliminate) {
+                onRemoveChampion(championToEliminate.id);
+            }
+        }
+
+        if (selectedChampions.length === 2) {
+            // Now only the winner is left
+            const winnerChampion = selectedChampions.find(
+                (champ) => champ.name === selectedChampionName
+            );
+            if (winnerChampion) {
+                onEliminationResult(winnerChampion.name);
             }
         }
     };

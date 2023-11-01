@@ -34,7 +34,7 @@ function Roulette() {
     <div className={mode === "elimination" ? "elimination-theme" : ""}>
       <section className="selected-champion">
         <h3>Selected Champions:</h3>
-        <ul>
+        <ul className="champions-list">
           {selectedChampions.map((champion, index) => (
             <li key={index}>
               <span>{champion.name}</span>
@@ -45,9 +45,6 @@ function Roulette() {
             </li>
           ))}
         </ul>
-        <div>
-          <button onClick={removeAllChamps}>Remove All</button>
-        </div>
       </section>
 
       <section className="chooseGameMode">
@@ -70,7 +67,15 @@ function Roulette() {
         />
       )}
 
-      {rouletteResult && <h3 className="roulette_result">Roulette Result: {rouletteResult}</h3>}
+      <div id="remove-all-button">
+        {selectedChampions.length > 0 && (
+          <button onClick={removeAllChamps}>Remove All</button>
+        )}
+      </div>
+
+      {rouletteResult && (
+        <h3 className="roulette_result">Roulette Result: {rouletteResult}</h3>
+      )}
 
       <ChampionsList
         onSelectChampion={handleSelectChampion}

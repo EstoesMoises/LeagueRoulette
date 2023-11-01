@@ -36,11 +36,50 @@ button:hover {
 
 /* App Specific Styles */
 .container {
-  max-width: 800px;
+  max-width: auto;
+  max-height: auto;
   width: 100%;
   padding: 20px;
   margin: 30px auto;
 }
+
+.selected-champion {
+  height: 30vh;
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+}
+
+/* Styling the scrollbar for WebKit browsers like Chrome, Safari, etc. */
+.selected-champion::-webkit-scrollbar {
+  height: 8px; /* Adjust the height of the scrollbar */
+  background-color: #f5f5f5; /* Background color of the scrollbar */
+}
+
+.selected-champion::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scroll thumb */
+  border-radius: 10px; /* Rounded corners of the scroll thumb */
+}
+
+.selected-champion::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scroll thumb on hover */
+}
+
+.champions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Enables Flexbox layout */
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  align-content: flex-start; /* Aligns content to the start */
+  max-height: 30vh;
+}
+
+.champions-list li {
+  flex: 0 0 auto; /* Prevents items from growing or shrinking */
+  margin-right: 10px; /* Spacing between items horizontally */
+  margin-bottom: 10px; /* Spacing between items vertically */
+}
+
 
 .selected-champion, .chooseGameMode {
   background-color: #1c1c1e;
@@ -49,6 +88,8 @@ button:hover {
   margin-bottom: 20px;
   transition: transform 0.3s ease;
 }
+
+#remove-all-button {}
 
 .selected-champion h3, .chooseGameMode h3 {
   margin-bottom: 15px;
@@ -68,11 +109,19 @@ button:hover {
   width: 40px;
   height: 40px;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .roulette-container {
-  text-align: center;
+  display: flex;
+  justify-content: space-between; /* This will space out children elements */
+  align-items: center; /* This will vertically center children elements */
 }
+
+#remove-all-button {
+  margin-left: 80%;
+}
+
 
 .searchBar {
   display: flex;
