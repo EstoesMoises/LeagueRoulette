@@ -13,8 +13,8 @@ type Props = {
 
 function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
     const [isSpinning, setIsSpinning] = useState(false);
-    const [displayedChampion, setDisplayedChampion] = useState("");
-    const [championIcon, setChampionIcon] = useState("");
+    const [displayedChampion, setDisplayedChampion] = useState("SPIN");
+    const [championIcon, setChampionIcon] = useState("https://ddragon.leagueoflegends.com/cdn/13.21.1/img/profileicon/588.png");
 
     function updateDisplay(currentIndex: number, speed: number) {
         setDisplayedChampion(selectedChampions[currentIndex].name);
@@ -46,14 +46,14 @@ function SpinRoulette ({ selectedChampions, onSpinResult }: Props) {
     };
 
     return (
-        <div>
+        <div className="roulette">
             {displayedChampion && (
                 <div className="champion-card">
                     <img src={championIcon} alt={displayedChampion} className="champion-image" />
                     <h3 className="champion-name">{displayedChampion}</h3>
                 </div>
             )}
-            <button onClick={spinRoulette} disabled={isSpinning}>
+            <button className="spin-button" onClick={spinRoulette} disabled={isSpinning}>
                 {isSpinning ? "Spinning..." : "Spin Roulette"}
             </button>
         </div>

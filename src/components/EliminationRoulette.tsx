@@ -41,7 +41,6 @@ function EliminationRoulette({
   return (
     <div className="roulette-container">
       <SpinRoulette selectedChampions={selectedChampions} onSpinResult={handleSpinResult} />
-      <p>Eliminate champs randomly until only one is left.</p>
     </div>
   );
 };

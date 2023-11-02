@@ -52,9 +52,11 @@ function ChampionsList({onSelectChampion, selectedChampions}: ChampionListProps)
   } else {
     return (
       <>
-        <section className="searchBar container">
+        <section className="search-container">
+          <span className="search-icon">🔍</span>
           <input
             type="text"
+            className="search-bar"
             placeholder="Search champion..."
             onChange={(e) => {
               setSearchTerm(e.target.value);

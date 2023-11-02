@@ -1,27 +1,25 @@
-# React + TypeScript + Vite
+# League Roulette
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to League Roulette, a delightful and engaging application designed for League of Legends enthusiasts! If you're ever in doubt about which champion to pick for your next match, let League Roulette make the decision for you. 
 
-Currently, two official plugins are available:
+### Features
+- **Champion Selection Made Easy**: Struggling to decide on your next champion? Let League Roulette do the heavy lifting and add an element of surprise to your gaming sessions!
+- **Up-to-date Data**: Fetching information directly from League's API, the app ensures you have access to the latest champion icons, names, and titles.
+- **Two Exciting Modes**: 
+    - **Standard Roulette**: In need of a random champion selection? Spin the Standard Roulette and embrace the champion it picks for you.
+    - **Elimination Roulette**: Add a twist to your selection process. Keep spinning until you’re left with a single champion - your destined winner!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### How to Contribute
+Your contributions are most welcome! If you have ideas for improvements or new features, feel free to fork the repository, make your changes, and create a pull request. I'm excited to review and collaborate on enhancements to the app.
 
-## Expanding the ESLint configuration
+### Get Started
+1. Clone the repository to your local machine.
+2. Install dependencies.
+3. Run the application and enjoy the thrill of random champion selection!
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### This is also deployed in vercel, so feel free to visit the page.
 
-- Configure the top-level `parserOptions` property like this:
+### Have Fun!
+League Roulette is all about adding an element of fun and unpredictability to your gaming experience. Enjoy the spin, embrace the random, and may your chosen champion lead you to victory!
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+*Note: This project is not affiliated with or endorsed by Riot Games.*
