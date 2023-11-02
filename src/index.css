@@ -68,6 +68,10 @@ button:hover {
   background-color: #555; /* Color of the scroll thumb on hover */
 }
 
+.champion-grid {
+  min-height: 500px; 
+}
+
 .champions-list {
   list-style: none;
   padding: 0;
